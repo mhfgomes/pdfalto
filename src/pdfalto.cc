@@ -59,6 +59,7 @@ static GBool cutPages = gFalse;
 //static GBool blocks = gFalse;
 static GBool noLineNumbers = gFalse;
 static GBool fullFontName = gFalse;
+static GBool noMeta = gFalse;
 
 // deprecated
 static GBool noImageInline = gFalse;
@@ -90,6 +91,8 @@ static ArgDesc argDesc[] = {
                 "create an outline file xml"},
         {"-annotation",    argFlag,   &annots,          0,
                 "create an annotations file xml"},
+        {"-noMeta",    argFlag,   &noMeta,          0,
+                "do not create _metadata.xml"},
 // PL: code for supporting cut pages need to be put back
 //        {"-cutPages",      argFlag,   &cutPages,        0,
 //                "cut all pages in separately files"},
@@ -206,6 +209,13 @@ int main(int argc, char *argv[]) {
         cmd->append("-noImage ");
     } else {
         parameters->setDisplayImage(gTrue);
+    }
+
+    if (noMeta) {
+        parameters->setNoMeta(gFalse);
+        cmd->append("-noMeta ");
+    } else {
+        parameters->setNoMeta(gTrue);
     }
 
     if (noText) {
@@ -385,7 +395,7 @@ int main(int argc, char *argv[]) {
 
     xmlAltoOut->initMetadataInfoDoc();
     xmlAltoOut->addMetadataInfo(doc);
-    xmlAltoOut->closeMetadataInfoDoc(shortFileName);
+    xmlAltoOut->closeMetadataInfoDoc(shortFileName, noMeta);
 
     if (xmlAltoOut->isOk()) {
 

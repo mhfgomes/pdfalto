@@ -8342,12 +8342,14 @@ void XmlAltoOutputDev::addMetadataInfo(PDFDocXrce *pdfdocxrce) {
     info.free();
 }
 
-void XmlAltoOutputDev::closeMetadataInfoDoc(GString *shortFileName) {
+void XmlAltoOutputDev::closeMetadataInfoDoc(GString *shortFileName, GBool noMeta) {
     GString *metadataFilename = new GString(shortFileName);
     metadataFilename->append("_");
     metadataFilename->append(NAME_METADATA);
     metadataFilename->append(EXTENSION_XML);
-    xmlSaveFile(metadataFilename->getCString(), docMetadata);
+    if(!noMeta) {
+        xmlSaveFile(metadataFilename->getCString(), docMetadata);
+    }
     xmlFreeDoc(docMetadata);
 
 }

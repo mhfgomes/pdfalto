@@ -1711,7 +1711,7 @@ public:
      * @param doc The PDF document object */
     void addMetadataInfo(PDFDocXrce *doc);
 
-    void closeMetadataInfoDoc(GString *shortFileName);
+    void closeMetadataInfoDoc(GString *shortFileNamem, GBool noMeta);
 
     /** Appends the styles metadata informations */
     void addStyles();

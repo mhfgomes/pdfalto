@@ -48,6 +48,11 @@ public:
 	 */
 	GBool getDisplayImage() {return displayImage;};
 	
+	/** Return a boolean which inform if the images are displayed
+	 * @return <code>true</code> if the noImage option is not selected, <code>false</code> otherwise
+	 */
+	GBool getNoMeta() {return noMeta;};
+
 	/** Return a boolean which inform if the bookmark is displayed
 	 * @return <code>true</code> if the outline option is selected, <code>false</code> otherwise
 	 */
@@ -102,6 +107,11 @@ public:
 	 */
 	void setDisplayImage(GBool noImage);
 	
+	/** Modify the boolean which inform if the images are displayed
+	 * @param noImage <code>true</code> if the noImage option is not selected, <code>false</code> otherwise
+	 */
+	void setNoMeta(GBool noMetaTag);
+
 	/** Modify the boolean which inform if the text is displayed 
 	 * @param notext <code>true</code> if the toText option is selected, <code>false</code> otherwise
 	 */	
@@ -161,6 +171,8 @@ private:
 
 	/** The value of the noImage option */
 	GBool displayImage;
+	/** The value of the noMeta option */
+	GBool noMeta;
 	/** The value of the noText option */
 	GBool displayText;
 	/** The value of the blocks option */

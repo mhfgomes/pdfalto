@@ -21,6 +21,12 @@ void Parameters::setFilesCountLimit(int count) {
 	unlockGlobalParams;
 }
 
+void Parameters::setNoMeta(GBool noMetaTag) {
+  lockGlobalParams;
+  noMeta = noMetaTag;
+  unlockGlobalParams;
+}
+
 void Parameters::setDisplayImage(GBool image) {
   lockGlobalParams;
   displayImage = image;
